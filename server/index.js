@@ -14,7 +14,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('api', require('./api'));
+app.use('/api', require('./api'));
 
 app.use((req, res, next) => {
   res.send('Invalid route.');
