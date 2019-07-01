@@ -50,7 +50,7 @@ router.delete('/:id', async (req, res, next) => {
     await User.destroy({ where: { id } });
     res.json({ msg: `Successfully deleted the user with id: ${id}` });
   } catch (error) {
-    console.error(error);
+    next(error);
   }
 });
 
