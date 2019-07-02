@@ -44,6 +44,7 @@ User.updateUser = function(id, { name, departmentId }) {
     : { name, departmentId: null };
   return User.update(updateObj, {
     where: { id },
+    returning: true,
   });
 };
 

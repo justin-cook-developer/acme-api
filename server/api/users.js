@@ -29,7 +29,7 @@ router.post('/', async (req, res, next) => {
     // user.departmentId && user.departmentId.length
     //   ? res.json(await User.findById(user.id))
     //   : res.json(user);
-    res.json(await User.findById(user.id));
+    res.json(user);
   } catch (error) {
     next(error);
   }
@@ -37,8 +37,9 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    await User.updateUser(req.params.id, req.body);
-    res.json(await User.findById(req.params.id));
+    const [_,[user]] = await User.updateUser(req.params.id, req.body);
+    // res.json(await User.findById(req.params.id));
+    res.json(user)
   } catch (error) {
     next(error);
   }
