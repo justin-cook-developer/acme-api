@@ -34,7 +34,7 @@ User.findById = function(id) {
 User.makeUser = function({ name, departmentId }) {
   return this.findOrCreate({
     where: { name },
-    defaults: departmentId.length ? { departmentId } : {},
+    defaults: departmentId && departmentId.length ? { departmentId } : {},
   });
 };
 

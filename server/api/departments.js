@@ -34,8 +34,11 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const [_,[department]] = await Department.updateDepartment(req.params.id, req.body);
-    res.json(department)
+    const [_, [department]] = await Department.updateDepartment(
+      req.params.id,
+      req.body
+    );
+    res.json(department);
   } catch (error) {
     next(error);
   }

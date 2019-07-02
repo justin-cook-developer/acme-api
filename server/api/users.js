@@ -24,6 +24,7 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
+    console.log(req.body)
     const [user, found] = await User.makeUser(req.body);
     found ? res.status(200) : res.status(201);
     // user.departmentId && user.departmentId.length

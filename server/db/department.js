@@ -42,7 +42,7 @@ Department.makeDepartment = function({ name }) {
 };
 
 Department.updateDepartment = function(id, data) {
-  return User.update(data, {
+  return this.update(data, {
     where: { id },
     returning: true,
   });
