@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const { Model, connection } = require('./db');
-const User = require('./user')
+const User = require('./user');
 
 class Department extends Model {}
 Department.init(
@@ -26,14 +26,14 @@ Department.init(
 );
 
 Department.getAll = function() {
-  return this.findAll({include: [{model: User}]});
-}
+  return this.findAll({ include: [{ model: User }] });
+};
 
 Department.findById = function(id) {
   return this.findByPk(id, {
     include: [{ model: User }],
   });
-}
+};
 
 Department.makeDepartment = function({ name }) {
   return this.findOrCreate({
@@ -47,6 +47,5 @@ Department.updateDepartment = function(id, data) {
     returning: true,
   });
 };
-
 
 module.exports = Department;

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User, Department } = require('../db/index');
+const { User } = require('../db/index');
 
 router.get('/', async (req, res, next) => {
   try {
@@ -24,12 +24,9 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    console.log(req.body)
+    console.log(req.body);
     const [user, found] = await User.makeUser(req.body);
     found ? res.status(200) : res.status(201);
-    // user.departmentId && user.departmentId.length
-    //   ? res.json(await User.findById(user.id))
-    //   : res.json(user);
     res.json(user);
   } catch (error) {
     next(error);
@@ -38,9 +35,8 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const [_,[user]] = await User.updateUser(req.params.id, req.body);
-    // res.json(await User.findById(req.params.id));
-    res.json(user)
+    const [_, [user]] = await User.updateUser(req.params.id, req.body);
+    res.json(user);
   } catch (error) {
     next(error);
   }

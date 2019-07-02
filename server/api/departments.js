@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User, Department } = require('../db/index');
+const { Department } = require('../db/index');
 
 router.get('/', async (req, res, next) => {
   try {
@@ -48,7 +48,7 @@ router.delete('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
     await Department.destroy({ where: { id } });
-    res.json({ msg: `Successfully deleted the Department with id: ${id}` });
+    res.json({ msg: `Successfully deleted the department with id: ${id}` });
   } catch (error) {
     next(error);
   }
